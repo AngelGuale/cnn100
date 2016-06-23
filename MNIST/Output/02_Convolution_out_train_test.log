@@ -1,0 +1,314 @@
+-------------------------------------------------------------------
+Build info: 
+
+		Built time: Apr 25 2016 04:32:30
+		Last modified date: Mon Apr 18 03:45:35 2016
+		Build type: release
+		Build target: CPU-only
+		With 1bit-SGD: no
+		Math lib: acml
+		Build Branch: HEAD
+		Build SHA1: 29c065ae7c1c370d8852c283d4e9f1a068ba2233
+		Built by philly on 69aed44b2c41
+		Build Path: /home/philly/jenkins/workspace/CNTK-Build-Linux
+-------------------------------------------------------------------
+
+Running on localhost at 2016/06/21 00:34:51
+Command line: 
+cntk  configFile=../Config/02_Convolution.cntk
+
+
+
+>>>>>>>>>>>>>>>>>>>> RAW CONFIG (VARIABLES NOT RESOLVED) >>>>>>>>>>>>>>>>>>>>
+RootDir = ".."
+ConfigDir = "$RootDir$/Config"
+DataDir   = "$RootDir$/Data"
+OutputDir = "$RootDir$/Output"
+ModelDir  = "$OutputDir$/Models"
+deviceId = 0
+imageLayout = "cudnn"
+command = train:test
+precision = "float"
+modelPath = "$ModelDir$/02_Convolution"
+ndlMacros = "$ConfigDir$/Macros.ndl"
+stderr = "$OutputDir$/02_Convolution_out"
+traceLevel=1
+numMBsToShowResult=500
+prefetch=true
+initOnCPUOnly=true
+train = [
+    action = "train"
+    NDLNetworkBuilder = [
+        networkDescription = "$ConfigDir$/02_Convolution.ndl"
+    ]
+    SGD = [
+        epochSize = 68
+	minibatchSize = 4
+        learningRatesPerMB = 0.1*5:0.3
+	 momentumPerMB = 0*10:0.7
+	maxEpochs= 24
+    ]
+    reader = [
+        readerType = "UCIFastReader"
+        file="$DataDir$/trainCamaron100.txt"
+        features = [
+            dim = 10000
+            start = 1
+        ]
+        labels = [
+            dim = 1
+            start = 0
+            labelDim = 10
+	    labelMappingFile = "$DataDir$/labels_camaron.txt"
+        ]
+    ]    
+]
+test = [
+    action = test
+    minibatchSize = 16
+    NDLNetworkBuilder = [
+        networkDescription = "$ConfigDir$/02_Convolution.ndl"
+    ]
+    reader = [
+        readerType = "UCIFastReader"
+        file="$DataDir$/testCamaron100.txt"
+        features = [
+            dim = 10000
+            start = 1
+        ]
+        labels = [
+            dim = 1
+            start = 0
+            labelDim = 10
+	     labelMappingFile = "$DataDir$/labels_camaron.txt"
+        ]
+    ]
+]
+
+<<<<<<<<<<<<<<<<<<<< RAW CONFIG (VARIABLES NOT RESOLVED)  <<<<<<<<<<<<<<<<<<<<
+
+>>>>>>>>>>>>>>>>>>>> RAW CONFIG WITH ALL VARIABLES RESOLVED >>>>>>>>>>>>>>>>>>>>
+RootDir = ".."
+ConfigDir = "../Config"
+DataDir   = "../Data"
+OutputDir = "../Output"
+ModelDir  = "../Output/Models"
+deviceId = 0
+imageLayout = "cudnn"
+command = train:test
+precision = "float"
+modelPath = "../Output/Models/02_Convolution"
+ndlMacros = "../Config/Macros.ndl"
+stderr = "../Output/02_Convolution_out"
+traceLevel=1
+numMBsToShowResult=500
+prefetch=true
+initOnCPUOnly=true
+train = [
+    action = "train"
+    NDLNetworkBuilder = [
+        networkDescription = "../Config/02_Convolution.ndl"
+    ]
+    SGD = [
+        epochSize = 68
+	minibatchSize = 4
+        learningRatesPerMB = 0.1*5:0.3
+	 momentumPerMB = 0*10:0.7
+	maxEpochs= 24
+    ]
+    reader = [
+        readerType = "UCIFastReader"
+        file="../Data/trainCamaron100.txt"
+        features = [
+            dim = 10000
+            start = 1
+        ]
+        labels = [
+            dim = 1
+            start = 0
+            labelDim = 10
+	    labelMappingFile = "../Data/labels_camaron.txt"
+        ]
+    ]    
+]
+test = [
+    action = test
+    minibatchSize = 16
+    NDLNetworkBuilder = [
+        networkDescription = "../Config/02_Convolution.ndl"
+    ]
+    reader = [
+        readerType = "UCIFastReader"
+        file="../Data/testCamaron100.txt"
+        features = [
+            dim = 10000
+            start = 1
+        ]
+        labels = [
+            dim = 1
+            start = 0
+            labelDim = 10
+	     labelMappingFile = "../Data/labels_camaron.txt"
+        ]
+    ]
+]
+
+<<<<<<<<<<<<<<<<<<<< RAW CONFIG WITH ALL VARIABLES RESOLVED <<<<<<<<<<<<<<<<<<<<
+
+>>>>>>>>>>>>>>>>>>>> PROCESSED CONFIG WITH ALL VARIABLES RESOLVED >>>>>>>>>>>>>>>>>>>>
+configparameters: 02_Convolution.cntk:command=train:test
+configparameters: 02_Convolution.cntk:ConfigDir=../Config
+configparameters: 02_Convolution.cntk:DataDir=../Data
+configparameters: 02_Convolution.cntk:deviceId=0
+configparameters: 02_Convolution.cntk:imageLayout=cudnn
+configparameters: 02_Convolution.cntk:initOnCPUOnly=true
+configparameters: 02_Convolution.cntk:ModelDir=../Output/Models
+configparameters: 02_Convolution.cntk:modelPath=../Output/Models/02_Convolution
+configparameters: 02_Convolution.cntk:ndlMacros=../Config/Macros.ndl
+configparameters: 02_Convolution.cntk:numMBsToShowResult=500
+configparameters: 02_Convolution.cntk:OutputDir=../Output
+configparameters: 02_Convolution.cntk:precision=float
+configparameters: 02_Convolution.cntk:prefetch=true
+configparameters: 02_Convolution.cntk:RootDir=..
+configparameters: 02_Convolution.cntk:stderr=../Output/02_Convolution_out
+configparameters: 02_Convolution.cntk:test=[
+    action = test
+    minibatchSize = 16
+    NDLNetworkBuilder = [
+        networkDescription = "../Config/02_Convolution.ndl"
+    ]
+    reader = [
+        readerType = "UCIFastReader"
+        file="../Data/testCamaron100.txt"
+        features = [
+            dim = 10000
+            start = 1
+        ]
+        labels = [
+            dim = 1
+            start = 0
+            labelDim = 10
+	     labelMappingFile = "../Data/labels_camaron.txt"
+        ]
+    ]
+]
+
+configparameters: 02_Convolution.cntk:traceLevel=1
+configparameters: 02_Convolution.cntk:train=[
+    action = "train"
+    NDLNetworkBuilder = [
+        networkDescription = "../Config/02_Convolution.ndl"
+    ]
+    SGD = [
+        epochSize = 68
+	minibatchSize = 4
+        learningRatesPerMB = 0.1*5:0.3
+	 momentumPerMB = 0*10:0.7
+	maxEpochs= 24
+    ]
+    reader = [
+        readerType = "UCIFastReader"
+        file="../Data/trainCamaron100.txt"
+        features = [
+            dim = 10000
+            start = 1
+        ]
+        labels = [
+            dim = 1
+            start = 0
+            labelDim = 10
+	    labelMappingFile = "../Data/labels_camaron.txt"
+        ]
+    ]    
+]
+
+<<<<<<<<<<<<<<<<<<<< PROCESSED CONFIG WITH ALL VARIABLES RESOLVED <<<<<<<<<<<<<<<<<<<<
+Commands: train test
+Precision = "float"
+CNTKModelPath: ../Output/Models/02_Convolution
+CNTKCommandTrainInfo: train : 24
+CNTKCommandTrainInfo: CNTKNoMoreCommands_Total : 24
+
+##############################################################################
+#                                                                            #
+# Action "train"                                                             #
+#                                                                            #
+##############################################################################
+
+CNTKCommandTrainBegin: train
+NDLBuilder Using CPU
+Reading UCI file ../Data/trainCamaron100.txt
+
+Creating virgin network.
+
+Post-processing network...
+
+3 roots:
+	ce = CrossEntropyWithSoftmax()
+	err = ErrorPrediction()
+	ol.z = Plus()
+
+Validating network. 27 nodes to process in pass 1.
+
+Validating --> labels = InputValue() :  -> [10 x *]
+Validating --> ol.W = LearnableParameter() :  -> [10 x 128]
+Validating --> h1.W = LearnableParameter() :  -> [128 x 7 x 7 x 32]
+Validating --> conv2.w.W = LearnableParameter() :  -> [32 x 400]
+Validating --> conv1.w.W = LearnableParameter() :  -> [16 x 25]
+Validating --> featScale = LearnableParameter() :  -> [1 x 1]
+Validating --> features = InputValue() :  -> [100 x 100 x 1 x *]
+Validating --> featScaled = ElementTimes (featScale, features) : [1 x 1], [100 x 100 x 1 x *] -> [100 x 100 x 1 x *]
+Validating --> conv1.c.c = Convolution (conv1.w.W, featScaled) : [16 x 25], [100 x 100 x 1 x *] -> [100 x 100 x 16 x *]
+Validating --> conv1.b.b = LearnableParameter() :  -> [1 x 1 x 16]
+Validating --> conv1.cpb = Plus (conv1.c.c, conv1.b.b) : [100 x 100 x 16 x *], [1 x 1 x 16] -> [100 x 100 x 16 x *]
+Validating --> conv1.out = RectifiedLinear (conv1.cpb) : [100 x 100 x 16 x *] -> [100 x 100 x 16 x *]
+Validating --> pool1 = MaxPooling (conv1.out) : [100 x 100 x 16 x *] -> [50 x 50 x 16 x *]
+Validating --> conv2.c.c = Convolution (conv2.w.W, pool1) : [32 x 400], [50 x 50 x 16 x *] -> [50 x 50 x 32 x *]
+Validating --> conv2.b.b = LearnableParameter() :  -> [1 x 1 x 32]
+Validating --> conv2.cpb = Plus (conv2.c.c, conv2.b.b) : [50 x 50 x 32 x *], [1 x 1 x 32] -> [50 x 50 x 32 x *]
+Validating --> conv2.out = RectifiedLinear (conv2.cpb) : [50 x 50 x 32 x *] -> [50 x 50 x 32 x *]
+Validating --> pool2.p = Pooling (conv2.out) : [50 x 50 x 32 x *] -> [25 x 25 x 32 x *]
+Validating --> h1.t = Times (h1.W, pool2.p) : [128 x 7 x 7 x 32], [25 x 25 x 32 x *] -> [128 x *]
+Validating --> h1.b = LearnableParameter() :  -> [128 x 1]
+Validating --> h1.z = Plus (h1.t, h1.b) : [128 x *], [128 x 1] -> [128 x 1 x *]
+Validating --> h1.y = Sigmoid (h1.z) : [128 x 1 x *] -> [128 x 1 x *]
+Validating --> ol.t = Times (ol.W, h1.y) : [10 x 128], [128 x 1 x *] -> [10 x 1 x *]
+Validating --> ol.b = LearnableParameter() :  -> [10 x 1]
+Validating --> ol.z = Plus (ol.t, ol.b) : [10 x 1 x *], [10 x 1] -> [10 x 1 x *]
+Validating --> ce = CrossEntropyWithSoftmax (labels, ol.z) : [10 x *], [10 x 1 x *] -> [1]
+Validating --> err = ErrorPrediction (labels, ol.z) : [10 x *], [10 x 1 x *] -> [1]
+
+Validating network. 16 nodes to process in pass 2.
+
+
+Validating network, final pass.
+
+
+Using GEMM convolution engine for geometry: Input: 100 x 100 x 1, Output: 100 x 100 x 16, Kernel: 5 x 5 x 1, Map: 1 x 1 x 16, Stride: 1 x 1 x 1, Sharing: (1), AutoPad: (1), LowerPad: 0, UpperPad: 0.
+
+Using GEMM convolution engine for geometry: Input: 100 x 100 x 16, Output: 50 x 50 x 16, Kernel: 2 x 2 x 1, Map: 1, Stride: 2 x 2 x 1, Sharing: (1), AutoPad: (0), LowerPad: 0, UpperPad: 0.
+
+Using GEMM convolution engine for geometry: Input: 50 x 50 x 16, Output: 50 x 50 x 32, Kernel: 5 x 5 x 16, Map: 32, Stride: 1 x 1 x 16, Sharing: (1, 1, 1), AutoPad: (1, 1, 0), LowerPad: 0, UpperPad: 0.
+
+Using GEMM convolution engine for geometry: Input: 50 x 50 x 32, Output: 25 x 25 x 32, Kernel: 2 x 2 x 1, Map: 1, Stride: 2 x 2 x 1, Sharing: (1), AutoPad: (1, 1, 0), LowerPad: 0, UpperPad: 0.
+Validating --> h1.t = Times (h1.W, pool2.p) : [128 x 7 x 7 x 32], [25 x 25 x 32 x *] -> [128 x *] FAILED
+
+EXCEPTION occurred: h1.t Times operation: Left [128 x 7 x 7 x 32] and right [25 x 25 x 32] operands' shapes are not compatible.
+
+[CALL STACK]
+[0x65f8e5]          Microsoft::MSR::CNTK::TimesNodeBase<float,false>::  Validate  (bool) + 0x1085
+[0x6a8976]          Microsoft::MSR::CNTK::ComputationNetwork::  ValidateNode  (std::shared_ptr<Microsoft::MSR::CNTK::ComputationNodeBase>,  bool) const + 0x286
+[0x6a8fb4]          Microsoft::MSR::CNTK::ComputationNetwork::  ValidateNodes  (std::list<std::shared_ptr<Microsoft::MSR::CNTK::ComputationNodeBase>,std::allocator<std::shared_ptr<Microsoft::MSR::CNTK::ComputationNodeBase>>>,  bool,  bool) + 0x1e4
+[0x6a94a3]          Microsoft::MSR::CNTK::ComputationNetwork::  ValidateNetwork  () + 0x1a3
+[0x6ad04c]          Microsoft::MSR::CNTK::ComputationNetwork::  CompileNetwork  () + 0x1cc
+[0x5c25a5]          Microsoft::MSR::CNTK::NDLBuilder<float>::  LoadFromConfig  (std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>> const&) + 0x205
+[0x5c27ac]          Microsoft::MSR::CNTK::NDLBuilder<float>::  BuildNetworkFromDescription  (Microsoft::MSR::CNTK::ComputationNetwork*) + 0x2c
+[0x796c32]          std::_Function_handler<std::shared_ptr<Microsoft::MSR::CNTK::ComputationNetwork> (int),bool TryGetNetworkFactory<Microsoft::MSR::CNTK::ConfigParameters,float>(Microsoft::MSR::CNTK::ConfigParameters const&,std::function<std::shared_ptr<Microsoft::MSR::CNTK::ComputationNetwork> (int)>&)::{lambda(int)#2}>::  _M_invoke  (std::_Any_data const&,  int) + 0x12
+[0x7672c6]          Microsoft::MSR::CNTK::SGD<float>::  Train  (std::function<std::shared_ptr<Microsoft::MSR::CNTK::ComputationNetwork> (int)>,  int,  Microsoft::MSR::CNTK::IDataReader*,  Microsoft::MSR::CNTK::IDataReader*,  bool) + 0x2c6
+[0x76ec03]          void  DoTrain  <Microsoft::MSR::CNTK::ConfigParameters,float>(Microsoft::MSR::CNTK::ConfigParameters const&) + 0x2a3
+[0x5cf318]          void  DoCommands  <float>(Microsoft::MSR::CNTK::ConfigParameters const&,  std::shared_ptr<Microsoft::MSR::CNTK::MPIWrapper> const&) + 0xb08
+[0x57052d]          wmainOldCNTKConfig  (int,  wchar_t**)              + 0xe4d
+[0x570d87]          wmain1  (int,  wchar_t**)                          + 0x87
+[0x564d08]          main                                               + 0xd8
+[0x7f8388f40f45]    __libc_start_main                                  + 0xf5
+[0x568730]                                                            
